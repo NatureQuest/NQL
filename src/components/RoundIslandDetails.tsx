@@ -47,7 +47,7 @@ const RoundIslandDetails = () => {
         <h3 className="font-serif text-xl font-bold text-primary mb-3 flex items-center gap-2"><Sparkles className="w-5 h-5" /> Choose Your Ride</h3>
         <div className="space-y-3">
           {[
-            { name: "🛵 Scooter Tour", note: "Per person", price: "RM 350" },
+            { name: "🛵 Scooter Tour", note: "Per scooter", price: "RM 350" },
             { name: "🏎️ Sports Car — Shared", note: "Per person · Max 3 pax", price: "RM 399" },
             { name: "🏎️ Sports Car — Private", note: "Per tour · Max 3 pax", price: "RM 999" },
             { name: "🚐 Vellfire — Private", note: "Per tour · Max 5 pax", price: "RM 749" },
