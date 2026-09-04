@@ -1,7 +1,28 @@
-import { Button } from "@/components/ui/button";
-import { Clock, Users, MapPin, Info, Sparkles } from "lucide-react";
+import { useState } from "react";
+import WhatsAppEnquiry from "@/components/WhatsAppEnquiry";
+import { Clock, Users, MapPin, Info, Sparkles, ChevronLeft, ChevronRight, Camera } from "lucide-react";
+import roundGallery1 from "@/assets/tour-round-island-option1.jpg";
+import roundGallery2 from "@/assets/tour-round-island-option2.jpg";
+import roundGallery3 from "@/assets/tour-round-island-option3.jpg";
+import roundGallery4 from "@/assets/tour-round-island-option4.jpg";
+import roundGallery5 from "@/assets/tour-round-island-option5.jpg";
+import roundGallery6 from "@/assets/tour-round-island-v2-option1.jpg";
+
+const galleryImages = [
+  { src: roundGallery1, alt: "Guests on a beach stop with the tour vehicle and limestone cliffs" },
+  { src: roundGallery2, alt: "Group celebrating on a hidden Langkawi beach" },
+  { src: roundGallery3, alt: "Guests with the tour vehicle at a beach stop" },
+  { src: roundGallery4, alt: "Guests taking in the view with boats in the distance" },
+  { src: roundGallery5, alt: "Group cheering on the beach during the round island tour" },
+  { src: roundGallery6, alt: "Guests walking the shoreline in sarongs at sunset" },
+];
 
 const RoundIslandDetails = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => setCurrentImage((prev) => (prev + 1) % galleryImages.length);
+  const prevImage = () => setCurrentImage((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+
   return (
     <article className="container mx-auto px-6 py-8 md:py-12 max-w-3xl">
       <header className="mb-6">
@@ -10,6 +31,57 @@ const RoundIslandDetails = () => {
           A full-day journey around Langkawi — from hidden beaches and waterfalls to local culture and hilltop sunsets.
         </p>
       </header>
+
+      <div className="space-y-3 mb-8">
+        <h3 className="font-serif text-xl font-bold text-primary flex items-center gap-2">
+          <Camera className="h-5 w-5" /> Gallery
+        </h3>
+        <div
+          className="relative rounded-xl overflow-hidden bg-muted flex items-center justify-center"
+          style={{ minHeight: "250px" }}
+        >
+          <img
+            src={galleryImages[currentImage].src}
+            alt={galleryImages[currentImage].alt}
+            className="max-w-full max-h-[400px] object-contain transition-opacity duration-300"
+          />
+          <button
+            onClick={prevImage}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 hover:bg-background transition-colors"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 hover:bg-background transition-colors"
+            aria-label="Next photo"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+            {galleryImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentImage(i)}
+                className={`w-2 h-2 rounded-full transition-colors ${i === currentImage ? "bg-primary" : "bg-background/60"}`}
+                aria-label={`View photo ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          {galleryImages.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentImage(i)}
+              className={`shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-colors ${i === currentImage ? "border-primary" : "border-transparent opacity-60 hover:opacity-100"}`}
+            >
+              <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className="grid grid-cols-2 gap-4 mb-8">
         <div className="flex items-center gap-2 text-sm text-foreground/80">
@@ -111,11 +183,7 @@ const RoundIslandDetails = () => {
         </div>
       </div>
 
-      <div className="text-center pt-2">
-        <a href="/#booking">
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/80 uppercase tracking-widest text-sm px-10 py-6 rounded-full">Book Now</Button>
-        </a>
-      </div>
+      <WhatsAppEnquiry tourName="Round Island Tour" />
     </article>
   );
 };

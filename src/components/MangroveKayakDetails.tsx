@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CheckCircle, XCircle, MapPin, Info, Clock, Users, ChevronLeft, ChevronRight, Camera } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import WhatsAppEnquiry from "@/components/WhatsAppEnquiry";
 import kayakGallery1 from "@/assets/kayak-gallery-1.jpg";
 import kayakGallery2 from "@/assets/kayak-gallery-2.jpg";
 import kayakGallery3 from "@/assets/kayak-gallery-3.jpg";
@@ -244,13 +244,7 @@ const MangroveKayakDetails = () => {
           </div>
         </div>
 
-        <div className="pt-2">
-          <a href="/#booking">
-            <Button className="w-full uppercase tracking-widest text-sm rounded-full" size="lg">
-              Book Now
-            </Button>
-          </a>
-        </div>
+        <WhatsAppEnquiry tourName="Mangrove Kayak Tour" />
       </div>
     </article>
   );

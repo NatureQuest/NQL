@@ -1,5 +1,5 @@
 import { CheckCircle, XCircle, MapPin, Info, Users, Anchor } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import WhatsAppEnquiry from "@/components/WhatsAppEnquiry";
 
 const MangroveBoatDetails = () => {
   return (
@@ -175,11 +175,7 @@ const MangroveBoatDetails = () => {
           </div>
         </div>
 
-        <div className="pt-2">
-          <a href="/#booking">
-            <Button className="w-full uppercase tracking-widest text-sm rounded-full" size="lg">Book Now</Button>
-          </a>
-        </div>
+        <WhatsAppEnquiry tourName="Mangrove Boat Tour" />
       </div>
     </article>
   );

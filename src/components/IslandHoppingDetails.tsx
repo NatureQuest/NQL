@@ -1,7 +1,22 @@
-import { CheckCircle, XCircle, MapPin, Info, Clock, Users, Anchor } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { CheckCircle, XCircle, MapPin, Info, Clock, Users, Anchor, ChevronLeft, ChevronRight, Camera } from "lucide-react";
+import WhatsAppEnquiry from "@/components/WhatsAppEnquiry";
+import islandGallery1 from "@/assets/tour-island-option1.jpg";
+import islandGallery2 from "@/assets/tour-island-option3.jpg";
+import islandGallery3 from "@/assets/tour-island.jpg";
+
+const galleryImages = [
+  { src: islandGallery1, alt: "Longtail boats gliding between Langkawi's limestone karsts" },
+  { src: islandGallery2, alt: "Boat cruising through a narrow karst channel" },
+  { src: islandGallery3, alt: "Aerial view of a boat approaching a hidden island" },
+];
 
 const IslandHoppingDetails = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => setCurrentImage((prev) => (prev + 1) % galleryImages.length);
+  const prevImage = () => setCurrentImage((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+
   return (
     <article className="container mx-auto px-6 py-8 md:py-12 max-w-3xl">
       <div className="space-y-8">
@@ -11,6 +26,57 @@ const IslandHoppingDetails = () => {
             Langkawi's most-loved boat tour — a laid-back 3 to 4-hour cruise around some of the most beautiful islands you'll ever see. You'll stop at Pregnant Maiden Lake, watch eagles soar over the water, and chill on a quiet white-sand beach. Great for families, couples, or anyone who just wants a relaxing day on the water.
           </p>
         </header>
+
+        <div className="space-y-3">
+          <h3 className="font-serif text-xl font-bold flex items-center gap-2">
+            <Camera className="h-5 w-5 text-primary" /> Gallery
+          </h3>
+          <div
+            className="relative rounded-xl overflow-hidden bg-muted flex items-center justify-center"
+            style={{ minHeight: "250px" }}
+          >
+            <img
+              src={galleryImages[currentImage].src}
+              alt={galleryImages[currentImage].alt}
+              className="max-w-full max-h-[400px] object-contain transition-opacity duration-300"
+            />
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 hover:bg-background transition-colors"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 hover:bg-background transition-colors"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {galleryImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentImage(i)}
+                  className={`w-2 h-2 rounded-full transition-colors ${i === currentImage ? "bg-primary" : "bg-background/60"}`}
+                  aria-label={`View photo ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {galleryImages.map((img, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentImage(i)}
+                className={`shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-colors ${i === currentImage ? "border-primary" : "border-transparent opacity-60 hover:opacity-100"}`}
+              >
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="space-y-3">
           <h3 className="font-serif text-xl font-bold flex items-center gap-2"><Anchor className="h-5 w-5 text-primary" /> Where You'll Go</h3>
@@ -142,11 +208,7 @@ const IslandHoppingDetails = () => {
           </div>
         </div>
 
-        <div className="pt-2">
-          <a href="/#booking">
-            <Button className="w-full uppercase tracking-widest text-sm rounded-full" size="lg">Book Now</Button>
-          </a>
-        </div>
+        <WhatsAppEnquiry tourName="Island Hopping Tour" />
       </div>
     </article>
   );

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import WhatsAppEnquiry from "@/components/WhatsAppEnquiry";
 import { Clock, Users, AlertTriangle, Sparkles } from "lucide-react";
 
 const ATVDetails = () => {
@@ -93,11 +93,7 @@ const ATVDetails = () => {
         </div>
       </div>
 
-      <div className="text-center pt-2">
-        <a href="/#booking">
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/80 uppercase tracking-widest text-sm px-10 py-6 rounded-full">Book Now</Button>
-        </a>
-      </div>
+      <WhatsAppEnquiry tourName="ATV Jungle Trail" />
     </article>
   );
 };

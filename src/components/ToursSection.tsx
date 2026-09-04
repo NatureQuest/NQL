@@ -7,8 +7,8 @@ import tourJetski from "@/assets/tour-jetski.webp";
 import tourIsland from "@/assets/tour-island-option2.webp";
 import tourAtv from "@/assets/tour-atv.webp";
 import tourRoundIsland from "@/assets/tour-round-island-v2-option3-wrx.webp";
-import tourSunsetCruise from "@/assets/hero-bg.webp";
-import tourDayCruise from "@/assets/tour-island.jpg";
+import tourSunsetCruise from "@/assets/tour-island-option4.jpg";
+import tourDayCruise from "@/assets/tour-island-option5.jpg";
 
 const tours = [
   { title: "Mangrove Kayak", description: "Paddle silently through Langkawi's ancient mangrove tunnels in emerald waters.", image: tourKayak, slug: "kayak" },
