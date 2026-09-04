@@ -170,7 +170,6 @@ const MangroveBoatDetails = () => {
                 <tr className="border-t border-border"><td className="p-3">More than 3 days before</td><td className="p-3">Full refund — no worries</td></tr>
                 <tr className="border-t border-border"><td className="p-3">48 to 72 hours before</td><td className="p-3">50% charged</td></tr>
                 <tr className="border-t border-border"><td className="p-3">Less than 24 hours before</td><td className="p-3">Full charge</td></tr>
-                <tr className="border-t border-border"><td className="p-3">Didn't show up</td><td className="p-3">Full charge — deposit gone</td></tr>
               </tbody>
             </table>
           </div>
