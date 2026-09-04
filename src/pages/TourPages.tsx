@@ -5,6 +5,8 @@ import JetSkiDetails from "@/components/JetSkiDetails";
 import IslandHoppingDetails from "@/components/IslandHoppingDetails";
 import ATVDetails from "@/components/ATVDetails";
 import RoundIslandDetails from "@/components/RoundIslandDetails";
+import SunsetCruiseDetails from "@/components/SunsetCruiseDetails";
+import DayCruiseDetails from "@/components/DayCruiseDetails";
 
 export const MangroveKayakPage = () => (
   <TourPageShell title="Mangrove Kayak Tour" description="Paddle Langkawi's ancient mangrove tunnels with a local guide — packages, pricing & what to bring.">
@@ -39,5 +41,17 @@ export const ATVPage = () => (
 export const RoundIslandPage = () => (
   <TourPageShell title="Round Island Experience" description="A full-day private tour around Langkawi — beaches, waterfalls, culture and a Gunung Raya sunset.">
     <RoundIslandDetails />
+  </TourPageShell>
+);
+
+export const SunsetCruisePage = () => (
+  <TourPageShell title="Sunset Cruise" description="A private evening cruise across the Andaman Sea in Langkawi — packages, pricing & what to expect.">
+    <SunsetCruiseDetails />
+  </TourPageShell>
+);
+
+export const DayCruisePage = () => (
+  <TourPageShell title="Day Cruise" description="A full-day boat cruise around Langkawi's islands — swimming, snorkeling, lunch onboard & pricing.">
+    <DayCruiseDetails />
   </TourPageShell>
 );

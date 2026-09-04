@@ -18,6 +18,8 @@ const tours = [
   "Island Hopping Tour",
   "ATV Jungle Trail",
   "Round Island Tour",
+  "Sunset Cruise",
+  "Day Cruise",
 ];
 
 const BookingSection = () => {

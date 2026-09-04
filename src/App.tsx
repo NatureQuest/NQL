@@ -12,6 +12,8 @@ import {
   IslandHoppingPage,
   ATVPage,
   RoundIslandPage,
+  SunsetCruisePage,
+  DayCruisePage,
 } from "./pages/TourPages";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/tours/islands" element={<IslandHoppingPage />} />
           <Route path="/tours/atv" element={<ATVPage />} />
           <Route path="/tours/round" element={<RoundIslandPage />} />
+          <Route path="/tours/sunset" element={<SunsetCruisePage />} />
+          <Route path="/tours/daycruise" element={<DayCruisePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

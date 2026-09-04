@@ -8,6 +8,8 @@ const tourLinks = [
   { label: "Island Hopping Tour", to: "/tours/islands" },
   { label: "ATV Jungle Trail", to: "/tours/atv" },
   { label: "Round Island Tour", to: "/tours/round" },
+  { label: "Sunset Cruise", to: "/tours/sunset" },
+  { label: "Day Cruise", to: "/tours/daycruise" },
 ];
 
 const Footer = () => {

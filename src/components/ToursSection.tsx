@@ -7,6 +7,8 @@ import tourJetski from "@/assets/tour-jetski.webp";
 import tourIsland from "@/assets/tour-island-option2.webp";
 import tourAtv from "@/assets/tour-atv.webp";
 import tourRoundIsland from "@/assets/tour-round-island-v2-option3-wrx.webp";
+import tourSunsetCruise from "@/assets/hero-bg.webp";
+import tourDayCruise from "@/assets/tour-island.jpg";
 
 const tours = [
   { title: "Mangrove Kayak", description: "Paddle silently through Langkawi's ancient mangrove tunnels in emerald waters.", image: tourKayak, slug: "kayak" },
@@ -15,6 +17,8 @@ const tours = [
   { title: "Island Hopping", description: "Discover Langkawi's hidden beaches and pristine islands only accessible by boat.", image: tourIsland, slug: "islands" },
   { title: "ATV Jungle Trail", description: "Conquer Langkawi's rugged jungle trails through lush tropical landscapes.", image: tourAtv, slug: "atv" },
   { title: "Round Island", description: "A private circumnavigation of Langkawi — the ultimate island experience.", image: tourRoundIsland, slug: "round" },
+  { title: "Sunset Cruise", description: "Sail into a blazing Andaman sunset aboard a private cruise, drinks in hand.", image: tourSunsetCruise, slug: "sunset" },
+  { title: "Day Cruise", description: "A full day on the water — cruise, swim and snorkel between Langkawi's islands.", image: tourDayCruise, slug: "daycruise" },
 ];
 
 const ToursSection = () => {

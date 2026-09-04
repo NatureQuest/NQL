@@ -12,6 +12,8 @@ import tourJetski from "@/assets/tour-jetski.webp";
 import tourIsland from "@/assets/tour-island-option2.webp";
 import tourAtv from "@/assets/tour-atv.webp";
 import tourRoundIsland from "@/assets/tour-round-island-v2-option3-wrx.webp";
+import tourSunsetCruise from "@/assets/hero-bg.webp";
+import tourDayCruise from "@/assets/tour-island.jpg";
 
 const allTours = [
   { title: "Mangrove Kayak", tagline: "Paddle the ancient mangroves", to: "/tours/kayak", image: tourKayak },
@@ -20,6 +22,8 @@ const allTours = [
   { title: "Island Hopping", tagline: "Hidden beaches & lakes", to: "/tours/islands", image: tourIsland },
   { title: "ATV Jungle Trail", tagline: "Mud, jungle & waterfalls", to: "/tours/atv", image: tourAtv },
   { title: "Round Island", tagline: "A full-day private tour", to: "/tours/round", image: tourRoundIsland },
+  { title: "Sunset Cruise", tagline: "Golden hour on the Andaman Sea", to: "/tours/sunset", image: tourSunsetCruise },
+  { title: "Day Cruise", tagline: "Cruise, swim & snorkel all day", to: "/tours/daycruise", image: tourDayCruise },
 ];
 
 interface TourPageShellProps {
