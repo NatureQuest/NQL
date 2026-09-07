@@ -1,7 +1,24 @@
-import { CheckCircle, XCircle, MapPin, Info, Users, Anchor } from "lucide-react";
+import { useState } from "react";
+import { CheckCircle, XCircle, MapPin, Info, Users, Anchor, ChevronLeft, ChevronRight, Camera } from "lucide-react";
 import WhatsAppEnquiry from "@/components/WhatsAppEnquiry";
+import boatGallery1 from "@/assets/mangrove-boat-gallery-1.jpg";
+import boatGallery2 from "@/assets/mangrove-boat-gallery-2.jpg";
+import boatGallery3 from "@/assets/mangrove-boat-gallery-3.jpg";
+import boatGallery4 from "@/assets/mangrove-boat-gallery-4.jpg";
+
+const galleryImages = [
+  { src: boatGallery1, alt: "Guests cruising the mangrove river under the boat's canopy" },
+  { src: boatGallery2, alt: "The Kilim Geoforest Park signboard on the limestone cliff face" },
+  { src: boatGallery3, alt: "Tour boats moored at the jetty below the mangrove hills" },
+  { src: boatGallery4, alt: "Sunset over the sea stacks off Langkawi" },
+];
 
 const MangroveBoatDetails = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => setCurrentImage((prev) => (prev + 1) % galleryImages.length);
+  const prevImage = () => setCurrentImage((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+
   return (
     <article className="container mx-auto px-6 py-8 md:py-12 max-w-3xl">
       <div className="space-y-8">
@@ -11,6 +28,57 @@ const MangroveBoatDetails = () => {
             Explore the UNESCO Kilim Karst Geoforest Park the way it should be done — on your own terms. Our private boat charters let you cruise through limestone caves and ancient mangroves without the crowd, at whatever pace feels right. Hit all the iconic spots — Bat Cave, Eagle Watching, the Floating Fish Farm — with zero rush and plenty of time for photos and wildlife.
           </p>
         </header>
+
+        <div className="space-y-3">
+          <h3 className="font-serif text-xl font-bold flex items-center gap-2">
+            <Camera className="h-5 w-5 text-primary" /> Gallery
+          </h3>
+          <div
+            className="relative rounded-xl overflow-hidden bg-muted flex items-center justify-center"
+            style={{ minHeight: "250px" }}
+          >
+            <img
+              src={galleryImages[currentImage].src}
+              alt={galleryImages[currentImage].alt}
+              className="max-w-full max-h-[400px] object-contain transition-opacity duration-300"
+            />
+            <button
+              onClick={prevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 hover:bg-background transition-colors"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 hover:bg-background transition-colors"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {galleryImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentImage(i)}
+                  className={`w-2 h-2 rounded-full transition-colors ${i === currentImage ? "bg-primary" : "bg-background/60"}`}
+                  aria-label={`View photo ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {galleryImages.map((img, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentImage(i)}
+                className={`shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-colors ${i === currentImage ? "border-primary" : "border-transparent opacity-60 hover:opacity-100"}`}
+              >
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover" loading="lazy" />
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="space-y-6">
           <h3 className="font-serif text-xl font-bold flex items-center gap-2"><Anchor className="h-5 w-5 text-primary" /> Private Boat Tour</h3>
