@@ -21,7 +21,7 @@ export const MangroveBoatPage = () => (
 );
 
 export const JetSkiPage = () => (
-  <TourPageShell title="Jet Ski Adventure" description="Guided jet ski tours across Langkawi's emerald waters — island hopping & geoforest routes.">
+  <TourPageShell title="Jet Ski Adventure" description="Guided jet ski tours in Langkawi from RM550 — Bronze, Silver, Gold, private Platinum and supercharged Yamaha packages. Island-wide pickup included.">
     <JetSkiDetails />
   </TourPageShell>
 );
