@@ -1,7 +1,30 @@
+import { useState } from "react";
 import WhatsAppEnquiry from "@/components/WhatsAppEnquiry";
-import { Clock, Users, AlertTriangle, Sparkles } from "lucide-react";
+import { Clock, Users, AlertTriangle, Sparkles, ChevronLeft, ChevronRight, Camera } from "lucide-react";
+import atvGallery1 from "@/assets/atv-gallery-1.jpg";
+import atvGallery2 from "@/assets/atv-gallery-2.jpg";
+import atvGallery3 from "@/assets/atv-gallery-3.jpg";
+import atvGallery4 from "@/assets/atv-gallery-4.jpg";
+import atvGallery5 from "@/assets/atv-gallery-5.jpg";
+import atvGallery6 from "@/assets/atv-gallery-6.jpg";
+import atvGallery7 from "@/assets/atv-gallery-7.jpg";
+
+const galleryImages = [
+  { src: atvGallery1, alt: "Rider splashing an ATV across a flooded causeway" },
+  { src: atvGallery2, alt: "ATVs riding a track between Langkawi's green paddy fields" },
+  { src: atvGallery3, alt: "Riders watching the sunset over the paddy fields beside their ATVs" },
+  { src: atvGallery4, alt: "Rider taking an ATV along a sandy jungle trail" },
+  { src: atvGallery5, alt: "Two riders on ATVs at a hilltop stop above the treetops" },
+  { src: atvGallery6, alt: "Rider pausing on an ATV at a viewpoint over the countryside" },
+  { src: atvGallery7, alt: "Rider celebrating on an ATV beside the paddy fields" },
+];
 
 const ATVDetails = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => setCurrentImage((prev) => (prev + 1) % galleryImages.length);
+  const prevImage = () => setCurrentImage((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+
   return (
     <article className="container mx-auto px-6 py-8 md:py-12 max-w-3xl">
       <header className="mb-6">
@@ -10,6 +33,57 @@ const ATVDetails = () => {
           Jungle &amp; hill trails through Langkawi's wild side — mud, waterfalls, and pure adrenaline.
         </p>
       </header>
+
+      <div className="space-y-3 mb-8">
+        <h3 className="font-serif text-xl font-bold text-primary flex items-center gap-2">
+          <Camera className="h-5 w-5" /> Gallery
+        </h3>
+        <div
+          className="relative rounded-xl overflow-hidden bg-muted flex items-center justify-center"
+          style={{ minHeight: "250px" }}
+        >
+          <img
+            src={galleryImages[currentImage].src}
+            alt={galleryImages[currentImage].alt}
+            className="max-w-full max-h-[400px] object-contain transition-opacity duration-300"
+          />
+          <button
+            onClick={prevImage}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 hover:bg-background transition-colors"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm rounded-full p-1.5 hover:bg-background transition-colors"
+            aria-label="Next photo"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+            {galleryImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentImage(i)}
+                className={`w-2 h-2 rounded-full transition-colors ${i === currentImage ? "bg-primary" : "bg-background/60"}`}
+                aria-label={`View photo ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          {galleryImages.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentImage(i)}
+              className={`shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-colors ${i === currentImage ? "border-primary" : "border-transparent opacity-60 hover:opacity-100"}`}
+            >
+              <img src={img.src} alt={img.alt} className="w-full h-full object-cover" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className="grid grid-cols-2 gap-4 mb-8">
         <div className="flex items-center gap-2 text-sm text-foreground/80">
