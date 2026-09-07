@@ -33,7 +33,7 @@ export const IslandHoppingPage = () => (
 );
 
 export const ATVPage = () => (
-  <TourPageShell title="ATV Waterfall Adventure" description="ATV jungle & hill trails to Mat Kasa Waterfall in Langkawi — join-in or private tours.">
+  <TourPageShell title="ATV Jungle Trail" description="ATV jungle & hill trails to Mat Kasa Waterfall in Langkawi — join-in or private tours.">
     <ATVDetails />
   </TourPageShell>
 );

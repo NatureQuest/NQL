@@ -28,7 +28,7 @@ const ATVDetails = () => {
   return (
     <article className="container mx-auto px-6 py-8 md:py-12 max-w-3xl">
       <header className="mb-6">
-        <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary">ATV Waterfall Adventure</h1>
+        <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary">ATV Jungle Trail</h1>
         <p className="text-foreground/70 text-base mt-3">
           Jungle &amp; hill trails through Langkawi's wild side — mud, waterfalls, and pure adrenaline.
         </p>
